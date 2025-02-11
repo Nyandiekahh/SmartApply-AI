@@ -1,0 +1,82 @@
+/* src/styles/components/dashboard.css */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background);
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-container.dark {
+    --background: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+  }
+  
+  .dashboard-main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    transition: margin 0.3s ease;
+  }
+  
+  .dashboard-content {
+    padding: 2rem;
+    margin-top: var(--topnav-height);
+  }
+  
+  .welcome-section {
+    margin-bottom: 2rem;
+    animation: slideDown 0.5s ease;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  /* Card animations and styles */
+  .dashboard-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .dashboard-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
